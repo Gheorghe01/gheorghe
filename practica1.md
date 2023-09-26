@@ -9,20 +9,7 @@ $ufw allow 514/udp
 
 Después entramos en el archivo de configuración /etc/rsyslog.conf para descomentar las líneas "16,17,20,21,24,25" para despues en la línea 7 poner *.*@@"ip del servidor":514 que en mi caso era mi compañero Adrian con la IP 192.168.12.13:514.
 
-Por ultimo solo quedaria hace una comprobación enviando al servidor una mensaje cin el comando tail syslog
+Por ultimo solo quedaria hace una comprobación enviando al servidor una mensaje cin el comando tail syslog.
 
 
-
-practica2.md
-
-#Política de conthttps://github.com/Gheorghe01/gheorghe01.github.io.gitraseñas
-
-## Introducción
-   seguridad de nuestro sistema puede verse amenazada.
-   El objetivo de la práctica
-
-## Desarrollo
-    pam pw_password
-    * instalación
-    * configuració: editamos elarchivo /etc/security/pw_password.conf
 
