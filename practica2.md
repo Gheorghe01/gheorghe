@@ -1,23 +1,23 @@
 #Política de contraseñas
 
 ## Introducción
-   seguridad de nuestro sistema puede verse amenazada.
-   El objetivo de la práctica es añadir una capa más para que los usuarios de la red.
+seguridad de nuestro sistema puede verse amenazada.
+El objetivo de la práctica es añadir una capa más para que los usuarios de la red.
 
-   Lo haremos con el servicio PAM o módulos de autenticación conectables (Pluggable Authentication Modules)
-    son la capa de gestión que se encuentran entre las aplicaciones de Linux y el sistema de autenticación nativo del Linux.
+Lo haremos con el servicio PAM o módulos de autenticación conectables (Pluggable Authentication Modules)
+son la capa de gestión que se encuentran entre las aplicaciones de Linux y el sistema de autenticación nativo del Linux.
 
-    Y voy a describiros como cambiar la gestión de contraseñas con pam_pwquality (pam_cracklib).
-    pwquality es una versión más actual y mejorada de cracklib. pwquality llama a una rutina cracklib para verificar si la contraseña es parte de un diccionario si este se especifica en la directiva dictpath.
+Y voy a describiros como cambiar la gestión de contraseñas con pam_pwquality (pam_cracklib).
+pwquality es una versión más actual y mejorada de cracklib. pwquality llama a una rutina cracklib para verificar si la contraseña es parte de un diccionario si este se especifica en la directiva dictpath.
 
 
-    * instalación:
+ ## instalación:
 ```bash
-        $sudo apt install -y libpam-cracklib libpam-pwquality libpwquality-tools
+$sudo apt install -y libpam-cracklib libpam-pwquality libpwquality-tools
 ```
-    * configuración: 
-        Una vez instalado el módulo de libpwquality podemos editar sus opciones en el fichero "/etc/security/pwquality.conf".
-        Con las siguientes opciones podemos cambiar las políticas de seguridad de la contraseña:
+ ## configuración: 
+Una vez instalado el módulo de libpwquality podemos editar sus opciones en el fichero "/etc/security/pwquality.conf".
+Con las siguientes opciones podemos cambiar las políticas de seguridad de la contraseña:
 
 
         - difok: Número de caracteres en una nueva contraseña que no deben estar presentes en la contraseña anterior.
@@ -50,7 +50,4 @@
 
 
 
-```bash
-$ufw allow 514/tcp
-$ufw allow 514/udp
-```
+
