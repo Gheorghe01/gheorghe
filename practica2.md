@@ -1,4 +1,4 @@
-#Política de contraseñas
+### Política de contraseñas
 
 ## Introducción
 seguridad de nuestro sistema puede verse amenazada.
