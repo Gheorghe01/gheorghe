@@ -7,8 +7,16 @@ DESARROLLO
 1.paso:
 Añadimos los discos virtual a nuestra máquina virtual en VirtualBox(cada disco cuenta con 50,09 Gb)
 (![Alt text](discosVIRUAL.png))
+
+
+
+
 También con el comando lsblk podemos ver nuestros discos instalados en nuestra máquina
 ![Alt text](2.png)
+
+
+
+
 2.paso:
 creamos los  dos raids 1 correspondientes con el comando mdadm con la siguiente extructura:
 ```bash
