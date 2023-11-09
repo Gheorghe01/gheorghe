@@ -1,25 +1,40 @@
-INTRODUCCION
-    la redundancia le da un nivel más de seguridad a nuestro sistema en esta actividad lograremos un raid 10 en el servidor.
+1.generar certificado
+autofirma
+instalación(Apache)
+comprobación
 
 
-DESARROLLO
+## Introducción
+Los certificados digitales sirven para acreditar quien eres en el mundo de intrenet es una manera adicional y segura de acreditarte con los siguientes pasos vamos a generar un certficado en ubuntu:
 
-1.paso:
-Añadimos los discos virtual a nuestra máquina virtual en VirtualBox(cada disco cuenta con 50,09 Gb)
-(![Alt text](discosVIRUAL.png))
-También con el comando lsblk podemos ver nuestros discos instalados en nuestra máquina
-![Alt text](2.png)
-2.paso:
-creamos los  dos raids 1 correspondientes con el comando mdadm con la siguiente extructura:
+1.instalamos openssl
 ```bash
-mdadm --create /dev/md0 --level=1 \
-    --raid-devices=2 /dev/sdc /dev/sdb
-mdadm --create /dev/md1 --level=1 \
-    --raid-devices=2 /dev/sde /dev/sdd
+$sudo apt install openssl
 ```
-3.paso:
-Acontinuación creamos el volumen fisico:
+2.Generar una par de claves privada y publica (key):
+Utiliza OpenSSL para generar una clave privada.
 ```bash
-pvcreate /dev/md0
+$sudo sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
 ```
-4.paso
+3.Configurar apache para que utilice SSL
+Ahora modificaremos /etc/apache2/sites-available/default-ssl.conf que es el archivo de configuración de ssl por defecto de apache donde meteremos la clave privada y publica que generamos con el comando anterior.
+Dentro del archivo metemos el siguientes líneas:
+```bash
+SSLEngine on
+
+     SSLCertificateFile      /etc/ssl/certs/apache-selfsigned.crt
+    SSLCertificateKeyFile   /etc/ssl/private/apache-selfsigned.key
+```
+4.Ajustamos el firewall para que admita trafico https
+```bash
+    sudo ufw allow 'Apache Full'
+    sudo ufw delete allow 'Apache'
+```
+5.Por ultimo debemos habilitar el archivo de configuración de ssl con el comando a2ensite:
+```bash
+cd /etc/apache/sites-avaible/
+$sudo a2ensite default-ssl
+```
+
+## Resultado
+![Alt text](certificado.png)
