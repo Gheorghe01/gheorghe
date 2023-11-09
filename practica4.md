@@ -6,6 +6,8 @@ DESARROLLO
 
 1.paso:
 Añadimos los discos virtual a nuestra máquina virtual en VirtualBox(cada disco cuenta con 50,09 Gb)
+
+
 (![Alt text](discosVIRUAL.png))
 
 
