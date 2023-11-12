@@ -39,6 +39,11 @@ Con las siguientes opciones podemos cambiar las políticas de seguridad de la co
         sudo nano /etc/pam.d/common-password
 
         Y en la línea ""14,15,17,21"
+ ## comprobación
+ Para comprobar nuestras contraseñas tiene las políticas instaladas en el servidor utilizaremos el comando:
+ ```bash
+ echo "Contraseña" | pwscore
+ ```
 
 
 
