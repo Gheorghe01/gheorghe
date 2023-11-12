@@ -34,9 +34,11 @@ Con las siguientes opciones podemos cambiar las políticas de seguridad de la co
         - badwords: Lista de palabras separadas por espacios que no deben incluirse en la contraseña.
 
 
-    * Comprobación
+    
         Con nano he editado el archivo "/etc/pam.d/common-password"
+        ```bash
         sudo nano /etc/pam.d/common-password
+        ````
 
         Y en la línea ""14,15,17,21"
  ## comprobación
