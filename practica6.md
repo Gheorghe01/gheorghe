@@ -1,18 +1,14 @@
-1.generar certificado
-autofirma
-instalación(Apache)
-comprobación
-
 
 ## Introducción
-Los certificados digitales sirven para acreditar quien eres en el mundo de intrenet es una manera adicional y segura de acreditarte con los siguientes pasos vamos a generar un certficado en ubuntu:
+ En apache se refiere a la implementación de medidas de seguridad adicionales con el objetivo de reducir la superficie de ataque y fortalecer la configuración del servidor Apache. Apache es uno de los servidores web más utilizados, y endurecer su configuración es esencial para mitigar riesgos de seguridad.
+ Con los siguientes pasos podremos implementarlo en nuestra propia página web.
 
-1.instalamos openssl
+ ## Desarrollo
+ 1. Modificar los siguientes archivos de configuración de apache para que no se puedan ver archivos ocultos:
 ```bash
-$sudo apt install openssl
-```
-2.Generar una clave privada (key):
-Utiliza OpenSSL para generar una clave privada.
-```bash
-$sudoopenssl genpkey -algorithm RSA -out /home/alumno/key .pem -aes256
+$sudo nano/etc/apache2/apache2.conf
+
+    <Directory /var/www/html/>
+            Options -Indexes 
+    </Directory>
 ```
