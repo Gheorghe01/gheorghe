@@ -55,3 +55,27 @@ sudo ufw allow 443
 ```bash
 >ServerSignature Off
 ```
+9.establecer la directiva ServerTokens en 'Prod' en Apache
+  Edita el Archivo de Configuración de Apache
+  Busca una línea que contenga la directiva ServerTokens. Si no existe, puedes agregarla. Establécela en 'Prod'
+```bash
+ServerTokens Prod
+```
+11.Identifica los Módulos Innecesarios:
+   Lista los módulos actualmente cargados en tu servidor Apache para identificar cuáles consideras innecesarios. Puedes utilizar el siguiente comando para listar     los módulos habilitados
+```bash
+$apache2ctl -M  # Para Ubuntu/Debian
+```
+   Elimina las Directivas de Carga de Módulos.Dentro del archivo de configuración, busca las líneas que cargan los módulos innecesarios y coméntalas o elimina las    líneas. Las directivas de carga de módulos suelen tener un formato como:
+```bash
+LoadModule module_name_module modules/mod_module_name.so
+```
+14.limitar el tamaño de carga de archivos en Apache
+   Edita la Configuración de Apache
+   grega las siguientes líneas al archivo de configuración para establecer límites en el tamaño de carga de archivos. Puedes ajustar el tamaño según tus necesidades. Por ejemplo, para limitar el tamaño de carga a 10 megabytes
+```bash
+LimitRequestBody 10485760  # 10 megabytes en bytes
+```
+16.Correr Apache como un usuario y grupo separado 
+   
+
