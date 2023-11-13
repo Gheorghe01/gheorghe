@@ -4,14 +4,16 @@
  Con los siguientes pasos podremos implementarlo en nuestra propia página web.
 
  ## Desarrollo
- 1. Modificar los siguientes archivos de configuración de apache para que no se puedan ver archivos ocultos:
+ 1. Cómo Ocultar la Versión de Apache e Información del Sistema Operativo:
+    Abre el archivo de configuración principal de Apache, que generalmente se encuentra en /etc/apache2/apache2.conf
 ```bash
 $sudo nano /etc/apache2/apache2.conf
-
-    <Directory /var/www/html/>
-            Options -Indexes 
-    </Directory>
 ```
+ modifica las siguientes líneas en el archivo de configuración para desactivar la exposición de la versión de Apache y del sistema operativo:
+ ServerSignature Off
+ ServerTokens Prod
+ La línea ServerSignature Off oculta la información del servidor en las páginas de error, y ServerTokens Prod establece que solo se muestre la información esencial del servidor.
+
 2. Desactivar Módulos Innecesarios:
 Desactiva los módulos que no necesitas. Puedes hacerlo utilizando el comando a2dismod seguido del nombre del módulo:
 ```bash
