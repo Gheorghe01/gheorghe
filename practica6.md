@@ -93,6 +93,7 @@ Group micomandogrupo
 ```
 17.Protegerse contra los ataques de denegación de servicio distribuido (DDoS) 
     Aquí tienes algunas estrategias generales:
+    
     Usar una Red de Entrega de Contenido (CDN):
         Distribuir el contenido en varios servidores en todo el mundo para reducir el impacto de los ataques DDoS al dispersar la carga geográficamente.
 
