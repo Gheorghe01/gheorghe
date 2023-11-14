@@ -77,5 +77,33 @@ LoadModule module_name_module modules/mod_module_name.so
 LimitRequestBody 10485760  # 10 megabytes en bytes
 ```
 16.Correr Apache como un usuario y grupo separado 
-   
+   Crear un usuario y grupo dedicados:
+```bash
+sudo groupadd micomandogrupo
+sudo useradd -M -s /sbin/nologin -g micomandogrupo micomandousuario
+```
+   Cambiar la propiedad de los archivos de Apache. Cambie la propiedad de los archivos y directorios de Apache al usuario y grupo recién creados.
+```bash
+sudo chown -R micomandousuario:micomandogrupo /ruta/a/apache
+```
+   actualizar la configuración de Apache. Edite su archivo de configuración de Apache (generalmente ubicado en /etc/httpd/httpd.conf
+```bash
+User micomandousuario
+Group micomandogrupo
+```
+17.Protegerse contra los ataques de denegación de servicio distribuido (DDoS) 
+    Aquí tienes algunas estrategias generales:
+    Usar una Red de Entrega de Contenido (CDN):
+        Distribuir el contenido en varios servidores en todo el mundo para reducir el impacto de los ataques DDoS al dispersar la carga geográficamente.
 
+    Implementar Límites de Tasa:
+        Establecer límites de tasa para restringir la cantidad de solicitudes que un usuario puede realizar en un período de tiempo específico. Esto puede ayudar         a mitigar los ataques DDoS al limitar la velocidad a la que se procesan las solicitudes.
+
+    Desplegar un Cortafuegos de Aplicaciones Web (WAF):
+        Un WAF puede filtrar y supervisar el tráfico HTTP entre una aplicación web e Internet. Puede ayudar a bloquear patrones comunes de ataque y proporcionar          protección contra varios tipos de ataques DDoS.
+
+    Usar IP Anycast:
+        La IP Anycast dirige el tráfico al servidor más cercano, distribuyendo la carga y dificultando que los atacantes concentren el tráfico en un único                objetivo.   
+
+    Monitorear Patrones de Tráfico:
+        Monitorea regularmente el tráfico de tu red para identificar patrones inusuales que puedan indicar un ataque DDoS. Implementa alertas para actividades            sospechosas.
