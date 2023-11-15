@@ -37,4 +37,7 @@ $sudo a2ensite default-ssl
 ```
 
 ## Resultado
-![Alt text](certificado.png)
+1.Ahora nos metemos dentro de la configuración de nuestro navegador e importamos nuestro certificado.
+![firefox](https://github.com/Gheorghe01/gheorghe01.github.io/assets/145337384/5b64d7b7-60cd-4b08-b49a-d0ef69a896ab)
+
+![firefox2](https://github.com/Gheorghe01/gheorghe01.github.io/assets/145337384/48b510cf-a125-47e8-a133-d882f910496d)
