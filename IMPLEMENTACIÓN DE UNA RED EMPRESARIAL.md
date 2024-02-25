@@ -263,13 +263,14 @@ Creamos el directorio para el dominio:
 
 **sudo mkdir /var/www/grupo1**
 ```
+
 Ahora asignamos la propiedad del directorio con $USER.
+
 ```bash
 **sudo chown -R $USER:$USER /var/www/grupo1**
-```bash
+```
 
 Dentro de este directorio, crearemos un archivo HTML personalizado:
-```
 
 ```bash
 
