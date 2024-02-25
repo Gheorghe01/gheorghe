@@ -1,4 +1,4 @@
-IMPLEMENTACIÓN DE UNA RED EMPRESARIAL
+IMPLEMENTACIÓN DE | UNA RED EMPRESARIAL
 
 
 
@@ -151,7 +151,7 @@ La instalación y configuración de nuestro proxy SQUID es un proceso breve y se
 
 **Averiguamos el puerto** que está utilizando SQUID utilizando el siguiente comando y veremos que utiliza el 3128:
 
-**sudo netstat -apn || grep squid**
+**sudo netstat -apn | grep squid**
 
 
 **Configuración del Archivo squid.conf:**
