@@ -181,7 +181,7 @@ sudo netstat -apn | grep squid
 Editamos el archivo de configuración de SQUID para ajustarlo a nuestras necesidades:
 ```bash
 
-**sudo nano /etc/squid/squid.conf**
+sudo nano /etc/squid/squid.conf
 ```
 A continuación, añadimos o modificamos las siguientes líneas para habilitar la autenticación LDAP y restringir el acceso a ciertos grupos de páginas:
 
