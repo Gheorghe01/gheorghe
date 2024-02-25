@@ -278,11 +278,14 @@ Dentro de este directorio, crearemos un archivo HTML personalizado:
 ```
 Y añadiremos contenido, por ejemplo:
 
+
 <h1>Grupo1</h1>
 
+
 A continuación, configuraremos un archivo de host virtual para Apache:
+
 ```bash
-**sudo nano /etc/apache2/sites-available/grupo1.conf**
+sudo nano /etc/apache2/sites-available/grupo1.conf
 ```
 Con el siguiente contenido:
 
