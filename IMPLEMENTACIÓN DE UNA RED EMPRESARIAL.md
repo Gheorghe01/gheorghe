@@ -1,6 +1,5 @@
 IMPLEMENTACIÓN DE UNA RED EMPRESARIAL
-
-[![Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png](https://i.postimg.cc/zX9xfG5W/Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png)](https://postimg.cc/kBvQ192X)
+[![Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-001.png](https://i.postimg.cc/52sqC9Wn/Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-001.png)](https://postimg.cc/bZ2tXhJt)
 Gheroghe Covaci Coldar, Santiago E. Carpente Burguete, Javier Contell Adell Seguridad y Alta Disponibilidad
 
 2º ASIR- 2023/24
@@ -45,7 +44,7 @@ En el marco de la práctica final de este curso, nos enfrentamos al desafío de 
 
 <a name="_page3_x72.00_y72.00"></a>Estructura de Red Propuesta
 
-![](Aspose.Words.9f5f01c8-5adf-4172-9b6c-3424ac8ff944.002.jpeg)
+[![Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png](https://i.postimg.cc/zX9xfG5W/Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png)](https://postimg.cc/kBvQ192X)
 
 En resumen, afrontamos el desafío de crear una infraestructura que garantice la seguridad, la eficiencia operativa y el cumplimiento de requisitos específicos. El trabajo en equipo, la planificación detallada y la aplicación práctica de los conceptos aprendidos serán fundamentales para alcanzar el éxito en este proyecto.
 
