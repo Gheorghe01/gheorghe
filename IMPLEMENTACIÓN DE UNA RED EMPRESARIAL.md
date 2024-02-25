@@ -231,3 +231,90 @@ Para configurar el punto de acceso con autenticación RADIUS, sigue estos pasos 
 - Una vez añadido a la red, verifica la conectividad desde otros dispositivos. Asegúrate de que los dispositivos puedan descubrir y conectarse al grupo1 con la nueva configuración.
 
 Con estos pasos, hemos configurado con éxito el punto de acceso para autenticación a través de RADIUS utilizando el servidor LDAP. Asegúrate de realizar pruebas adicionales para verificar que la autenticación funcione correctamente y que los dispositivos se conecten al grupo1 sin problemas.
+
+INSTALACIÓN Y CONFIGURACIÓN DEL <a name="_page12_x72.00_y98.45"></a>SERVIDOR WEB
+
+1. **Instalación<a name="_page12_x72.00_y164.05"></a> de Apache**
+
+Para comenzar, instalaremos Apache en el servidor web con el siguiente comando:
+```bash
+
+**sudo apt install apache2**
+```
+Una vez instalado, podemos verificar su funcionamiento abriendo el navegador y visitando nuestra dirección IP para visualizar el archivo predeterminado index.html de Apache.
+
+2. **Generación<a name="_page12_x72.00_y331.14"></a> de la clave SSL**
+
+Ahora, crearemos una clave SSL para habilitar el protocolo HTTPS. Ejecutaremos el siguiente comando para generar la clave y el certificado autofirmado:
+```bash
+**sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt**
+```
+Durante este proceso, se nos solicitará información que completaremos. Habilitaremos el módulo SSL.
+```bash
+
+**sudo a2enmod ssl**
+```
+3. **Configuración<a name="_page12_x72.00_y544.49"></a> del Virtual Host**
+
+Vamos a crear un dominio en el directorio /var/www/ y no el predeterminado que es /var/www/html .
+
+Creamos el directorio para el dominio:
+```bash
+
+**sudo mkdir /var/www/grupo1**
+```
+Ahora asignamos la propiedad del directorio con $USER.
+```bash
+**sudo chown -R $USER:$USER /var/www/grupo1**
+```bash
+
+Dentro de este directorio, crearemos un archivo HTML personalizado:
+```
+
+```bash
+
+**sudo nano /var/www/grupo1/index.html**
+```
+Y añadiremos contenido, por ejemplo:
+
+<h1>Grupo1</h1>
+
+A continuación, configuraremos un archivo de host virtual para Apache:
+```bash
+**sudo nano /etc/apache2/sites-available/grupo1.conf**
+```
+Con el siguiente contenido:
+
+<VirtualHost \*:443>
+
+ServerName 172.16.2.10
+
+DocumentRoot /var/www/grupo1
+
+SSLEngine on
+
+SSLCertificateFile /etc/ssl/certs/apache-selfsigned.crt SSLCertificateKeyFile /etc/ssl/private/apache-selfsigned.key
+
+</VirtualHost>
+
+<VirtualHost \*:80>
+
+ServerName 172.16.2.10
+
+Redirect / https://172.16.2.10/ </VirtualHost>
+
+Podemos verificar la configuración con:
+```bash
+
+**sudo apache2ctl configtest**
+```
+Luego, habilitaremos el nuevo host virtual y deshabilitaremos el predeterminado:
+```bash
+
+**sudo a2dissite 000-default.conf sudo a2ensite grupo1.conf**
+```
+Finalmente, reiniciamos Apache para aplicar los cambios:
+```bash
+**sudo systemctl restart apache2**
+```
+Ahora, el servidor web está configurado para utilizar SSL y mostrar el contenido personalizado en el directorio del grupo1.
