@@ -1,3 +1,3 @@
 # IMPLEMENTACIÓN DE UNA RED EMPRESARIAL
 
-* [trabajo. Santi, Javi y Gheoghe](./IMPLEMENTACIÓN DE UNA RED EMPRESARIAL.md)
+* [trabajo. Santi, Javi y Gheorghe](./IMPLEMENTACIÓN DE UNA RED EMPRESARIAL.md)
