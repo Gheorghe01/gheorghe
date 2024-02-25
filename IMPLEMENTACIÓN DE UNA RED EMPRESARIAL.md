@@ -84,11 +84,11 @@ Con el servidor configurado con las direcciones IP correspondientes, procedemos 
 
 ```bash
 
-**sudo apt update**
+sudo apt update
 
-**sudo apt upgrade**
+sudo apt upgrade
 
-**sudo apt install netfilter-persistent**
+sudo apt install netfilter-persistent
 ```
 
 
@@ -96,11 +96,11 @@ Posteriormente, creamos el directorio /etc/iptables, que servirá para almacenar
 
 ```bash
 
-**mkdir /etc/iptables**
+mkdir /etc/iptables
 
-**sudo netfilter-persistent save**
+sudo netfilter-persistent save
 
-**sudo sysctl -w net.ipv4.ip\_forward=1 sudo sysctl -p**
+sudo sysctl -w net.ipv4.ip\_forward=1 sudo sysctl -p
 ```
 
 Con estas configuraciones, estamos listos para introducir las reglas específicas del firewall que controlarán el tráfico en nuestra red. Este paso permitirá garantizar la seguridad y eficiencia de la arquitectura de red empresarial que estamos implementando.
@@ -112,48 +112,48 @@ Ahora procedemos a establecer las reglas del firewall, siguiendo las directrices
 **NAT (Network Address Translation):**
 ```bash
 
-**sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE**
+sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
 ```
 
 Esta regla permite realizar la traducción de direcciones de red (NAT) para el tráfico saliente. **Control de Acceso a la Red Interna:**
 
 ```bash
 
-**sudo iptables -P FORWARD DROP**
+sudo iptables -P FORWARD DROP
 ```
 
 Se establece una política predeterminada de denegar todo el tráfico de forwarding, permitiendo un control más preciso de las conexiones.
 
 **Acceso a Internet desde Redes Internas:**
 ```
-**sudo iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT**
+sudo iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
 
-**sudo iptables -A FORWARD -i enp0s9 -o enp0s3 -j ACCEPT**
+sudo iptables -A FORWARD -i enp0s9 -o enp0s3 -j ACCEPT
 
-**sudo iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT**
+sudo iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 ```
 Estas reglas permiten el acceso a Internet desde las redes internas y solo aceptan paquetes establecidos o relacionados.
 
 **Restricción de Acceso desde DMZ a Red Interna:**
 ```bash
 
-**sudo iptables -A FORWARD -i enp0s9 -o enp0s8 -j ACCEPT**
+sudo iptables -A FORWARD -i enp0s9 -o enp0s8 -j ACCEPT
 ```
 Se permite el tráfico desde la DMZ al servidor web en la red interna, evitando que actúe como puerta de entrada.
 
 **Acceso Externo solo al Servidor Web:**
 ```bash
 
-**sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -p tcp -m multiport --dports 80,443 -j ACCEPT**
+sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -p tcp -m multiport --dports 80,443 -j ACCEPT
 
-**sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp -m multiport --dports 80,443 -j DNAT --to-destination 172.16.1.10**
+sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp -m multiport --dports 80,443 -j DNAT --to-destination 172.16.1.10
 ```
 Estas reglas permiten el acceso desde el exterior solo al servidor web y realizan la traducción de dirección de red (DNAT) para redirigir el tráfico al servidor web interno.
 
 **Tráfico Saliente a través del Proxy:**
 ```bash
 
-**sudo iptables -A FORWARD -s 172.16.2.1/24 -o enp0s3 -j ACCEPT**
+sudo iptables -A FORWARD -s 172.16.2.1/24 -o enp0s3 -j ACCEPT
 ```
 Esta regla dirige el tráfico saliente desde la red interna a través del proxy. Tan solo guardamos las reglas en el archivo /etc/iptables/rules.v4 y comprobamos que las reglas funcionen como esperamos.
 
@@ -168,12 +168,12 @@ La instalación y configuración de nuestro proxy SQUID es un proceso breve y se
 **Instalamos el paquete de SQUID mediante el siguiente comando:**
 ```bash
 
-**sudo apt install squid**
+sudo apt install squid
 ```
 **Averiguamos el puerto** que está utilizando SQUID utilizando el siguiente comando y veremos que utiliza el 3128:
 ```bash
 
-**sudo netstat -apn | grep squid**
+sudo netstat -apn | grep squid
 ```
 
 **Configuración del Archivo squid.conf:**
