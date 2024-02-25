@@ -1,7 +1,6 @@
 IMPLEMENTACIÓN DE UNA RED EMPRESARIAL
 
-![](Aspose.Words.9f5f01c8-5adf-4172-9b6c-3424ac8ff944.001.jpeg)
-
+[![Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png](https://i.postimg.cc/zX9xfG5W/Aspose-Words-9f5f01c8-5adf-4172-9b6c-3424ac8ff944-002.png)](https://postimg.cc/kBvQ192X)
 Gheroghe Covaci Coldar, Santiago E. Carpente Burguete, Javier Contell Adell Seguridad y Alta Disponibilidad
 
 2º ASIR- 2023/24
