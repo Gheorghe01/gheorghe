@@ -74,6 +74,7 @@ Instala una distribución de Linux en el servidor. Puedes optar por una distribu
    
 
 Configura las interfaces de red para reflejar la topología de tu red empresarial. Abre el archivo de configuración de red, generalmente ubicado en /etc/netplan o /etc/network/interfaces, en este caso /etc/netplan.
+[![image.png](https://i.postimg.cc/VvFWSrTK/image.png)](https://postimg.cc/MfvQNTzB)
 
 
 3. **Preparación<a name="_page4_x72.00_y288.65"></a> del Firewall**
@@ -81,13 +82,13 @@ Configura las interfaces de red para reflejar la topología de tu red empresaria
 
 Con el servidor configurado con las direcciones IP correspondientes, procedemos a la instalación de netfilter-persistent, la herramienta que utilizaremos para establecer las reglas de nuestro firewall. Para ello, actualizamos los repositorios y realizamos la instalación con los siguientes comandos:
 
-[![image.png](https://i.postimg.cc/VvFWSrTK/image.png)](https://postimg.cc/MfvQNTzB)
-
+'''
 **sudo apt update**
 
 **sudo apt upgrade**
 
 **sudo apt install netfilter-persistent**
+'''
 
 Posteriormente, creamos el directorio /etc/iptables, que servirá para almacenar las reglas del firewall. Además, activamos el reenvío de paquetes con los siguientes comandos:
 
