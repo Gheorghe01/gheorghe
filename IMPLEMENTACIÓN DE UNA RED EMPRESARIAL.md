@@ -153,6 +153,7 @@ La instalación y configuración de nuestro proxy SQUID es un proceso breve y se
 
 **sudo netstat -apn | grep squid**
 
+
 **Configuración del Archivo squid.conf:**
 
 Editamos el archivo de configuración de SQUID para ajustarlo a nuestras necesidades:
