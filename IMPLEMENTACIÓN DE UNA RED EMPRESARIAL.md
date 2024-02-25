@@ -66,16 +66,22 @@ En resumen, afrontamos el desafío de crear una infraestructura que garantice la
 <a name="_page4_x72.00_y72.00"></a>**INSTALACIÓN SERVIDOR FIREWALL/PROXY**
 
 1. **Instalación<a name="_page4_x72.00_y118.99"></a> del Sistema Operativo**
+   
 
 Instala una distribución de Linux en el servidor. Puedes optar por una distribución como Ubuntu Server o CentOS, que son opciones comunes y ampliamente soportadas. En este caso usaremos ubuntu server.
 
 2. **Configuración<a name="_page4_x72.00_y203.82"></a> de Interfaces de Red**
+   
 
 Configura las interfaces de red para reflejar la topología de tu red empresarial. Abre el archivo de configuración de red, generalmente ubicado en /etc/netplan o /etc/network/interfaces, en este caso /etc/netplan.
 
+
 3. **Preparación<a name="_page4_x72.00_y288.65"></a> del Firewall**
+   
 
 Con el servidor configurado con las direcciones IP correspondientes, procedemos a la instalación de netfilter-persistent, la herramienta que utilizaremos para establecer las reglas de nuestro firewall. Para ello, actualizamos los repositorios y realizamos la instalación con los siguientes comandos:
+
+[![image.png](https://i.postimg.cc/VvFWSrTK/image.png)](https://postimg.cc/MfvQNTzB)
 
 **sudo apt update**
 
