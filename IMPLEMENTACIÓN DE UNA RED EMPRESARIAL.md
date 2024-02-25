@@ -82,21 +82,26 @@ Configura las interfaces de red para reflejar la topología de tu red empresaria
 
 Con el servidor configurado con las direcciones IP correspondientes, procedemos a la instalación de netfilter-persistent, la herramienta que utilizaremos para establecer las reglas de nuestro firewall. Para ello, actualizamos los repositorios y realizamos la instalación con los siguientes comandos:
 
-'''
+```bash
+
 **sudo apt update**
 
 **sudo apt upgrade**
 
 **sudo apt install netfilter-persistent**
-'''
+```
+
 
 Posteriormente, creamos el directorio /etc/iptables, que servirá para almacenar las reglas del firewall. Además, activamos el reenvío de paquetes con los siguientes comandos:
+
+```bash
 
 **mkdir /etc/iptables**
 
 **sudo netfilter-persistent save**
 
 **sudo sysctl -w net.ipv4.ip\_forward=1 sudo sysctl -p**
+```
 
 Con estas configuraciones, estamos listos para introducir las reglas específicas del firewall que controlarán el tráfico en nuestra red. Este paso permitirá garantizar la seguridad y eficiencia de la arquitectura de red empresarial que estamos implementando.
 
@@ -105,43 +110,51 @@ Con estas configuraciones, estamos listos para introducir las reglas específica
 Ahora procedemos a establecer las reglas del firewall, siguiendo las directrices específicas del proyecto. Aquí se detallan las reglas según lo solicitado:
 
 **NAT (Network Address Translation):**
+```bash
 
 **sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE**
+```
 
 Esta regla permite realizar la traducción de direcciones de red (NAT) para el tráfico saliente. **Control de Acceso a la Red Interna:**
 
+```bash
+
 **sudo iptables -P FORWARD DROP**
+```
 
 Se establece una política predeterminada de denegar todo el tráfico de forwarding, permitiendo un control más preciso de las conexiones.
 
 **Acceso a Internet desde Redes Internas:**
-
+```
 **sudo iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT**
 
 **sudo iptables -A FORWARD -i enp0s9 -o enp0s3 -j ACCEPT**
 
 **sudo iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT**
-
+```
 Estas reglas permiten el acceso a Internet desde las redes internas y solo aceptan paquetes establecidos o relacionados.
 
 **Restricción de Acceso desde DMZ a Red Interna:**
+```bash
 
 **sudo iptables -A FORWARD -i enp0s9 -o enp0s8 -j ACCEPT**
-
+```
 Se permite el tráfico desde la DMZ al servidor web en la red interna, evitando que actúe como puerta de entrada.
 
 **Acceso Externo solo al Servidor Web:**
+```bash
 
 **sudo iptables -A FORWARD -i enp0s3 -o enp0s8 -p tcp -m multiport --dports 80,443 -j ACCEPT**
 
 **sudo iptables -t nat -A PREROUTING -i enp0s3 -p tcp -m multiport --dports 80,443 -j DNAT --to-destination 172.16.1.10**
-
+```
 Estas reglas permiten el acceso desde el exterior solo al servidor web y realizan la traducción de dirección de red (DNAT) para redirigir el tráfico al servidor web interno.
 
 **Tráfico Saliente a través del Proxy:**
+```bash
 
 **sudo iptables -A FORWARD -s 172.16.2.1/24 -o enp0s3 -j ACCEPT**
-
+```
 Esta regla dirige el tráfico saliente desde la red interna a través del proxy. Tan solo guardamos las reglas en el archivo /etc/iptables/rules.v4 y comprobamos que las reglas funcionen como esperamos.
 
 **sudo iptables-save > /etc/iptables/rules.v4**
@@ -153,20 +166,23 @@ Con estas reglas, se ha configurado el firewall según las especificaciones del 
 La instalación y configuración de nuestro proxy SQUID es un proceso breve y sencillo. A continuación, se detallan los pasos para llevar a cabo esta tarea:
 
 **Instalamos el paquete de SQUID mediante el siguiente comando:**
+```bash
 
 **sudo apt install squid**
-
+```
 **Averiguamos el puerto** que está utilizando SQUID utilizando el siguiente comando y veremos que utiliza el 3128:
+```bash
 
 **sudo netstat -apn | grep squid**
-
+```
 
 **Configuración del Archivo squid.conf:**
 
 Editamos el archivo de configuración de SQUID para ajustarlo a nuestras necesidades:
+```bash
 
 **sudo nano /etc/squid/squid.conf**
-
+```
 A continuación, añadimos o modificamos las siguientes líneas para habilitar la autenticación LDAP y restringir el acceso a ciertos grupos de páginas:
 
 **auth\_param basic program /usr/lib/squid/basic\_ldap\_auth -b “ou=unidad,dc=grupo1,dc=com" -f "uid=%s" -h 172.16.2.15 auth\_param basic children 5 startup=5 idle=1**
